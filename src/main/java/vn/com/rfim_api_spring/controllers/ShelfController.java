@@ -23,7 +23,7 @@ public class ShelfController {
     private ShelfService service;
 
     @RequestMapping(value = "/shelves", method = RequestMethod.GET)
-    public ResponseEntity findAllShelves() {
+    public ResponseEntity getAllShelves() {
         ResultResponse response = new ResultResponse();
         List<ShelfDTO> shelves = service.getAll();
         if (shelves.size() > 0) {
@@ -34,5 +34,10 @@ public class ShelfController {
             response.setMessage("No shelf found");
             return new ResponseEntity(response, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @RequestMapping(value = "/demo", method = RequestMethod.GET)
+    public ResponseEntity demo() {
+        return new ResponseEntity("Hello World!", HttpStatus.OK);
     }
 }

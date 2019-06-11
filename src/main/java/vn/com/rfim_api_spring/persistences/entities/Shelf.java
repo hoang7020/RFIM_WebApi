@@ -1,23 +1,23 @@
 package vn.com.rfim_api_spring.persistences.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "Shelf")
 public class Shelf {
+
     @Id
-//    @Column(name = "ShelfId")
     private String shelfId;
-    //    @Column(name = "shelfCode")
     private String shelfCode;
-    //    @Column(name = "Description")
     private String description;
-    //    @Column(name = "FloorNumber")
     private int floorNumber;
-    //    @Column(name = "CellNumber")
     private int cellNumber;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "shelf")
+    private List<Floor> listFloor = new ArrayList<>();
 
     public String getShelfId() {
         return shelfId;
