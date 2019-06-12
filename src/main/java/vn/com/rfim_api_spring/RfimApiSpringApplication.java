@@ -20,5 +20,4 @@ public class RfimApiSpringApplication {
     public static void main(String[] args) {
         SpringApplication.run(RfimApiSpringApplication.class, args);
     }
-
 }

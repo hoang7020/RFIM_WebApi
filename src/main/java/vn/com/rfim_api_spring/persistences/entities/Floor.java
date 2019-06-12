@@ -1,6 +1,8 @@
 package vn.com.rfim_api_spring.persistences.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Floor")
@@ -13,6 +15,8 @@ public class Floor {
     @ManyToOne
     @JoinColumn(name = "shelfId", nullable = false)
     private Shelf shelf;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "floor")
+    private List<Cell> listCells = new ArrayList<>();
 
     public String getFloorId() {
         return floorId;

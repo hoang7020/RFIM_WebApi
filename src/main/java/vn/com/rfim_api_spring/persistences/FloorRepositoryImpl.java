@@ -2,6 +2,7 @@ package vn.com.rfim_api_spring.persistences;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,15 @@ public class FloorRepositoryImpl implements FloorRepository {
     public List<Floor> getAll() {
         Session session = this.sessionFactory.getCurrentSession();
         List<Floor> floors = session.createQuery("FROM Floor", Floor.class).getResultList();
+        return floors;
+    }
+
+    @Override
+    public List<Floor> getByShelfId(String shelfId) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query query = session.createQuery("FROM Floor F WHERE F.shelf.shelfId = :id", Floor.class);
+        query.setParameter("id", shelfId);
+        List<Floor> floors = query.getResultList();
         return floors;
     }
 }

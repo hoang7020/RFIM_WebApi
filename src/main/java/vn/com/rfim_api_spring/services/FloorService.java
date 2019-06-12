@@ -24,4 +24,9 @@ public class FloorService {
         return floors;
     }
 
+    public List<FloorDTO> getByShelfId(String shelfId) {
+        List<FloorDTO> floors = mapper.map(context.getByShelfId(shelfId), new TypeToken<List<FloorDTO>>(){}.getType());
+        return floors;
+    }
+
 }
