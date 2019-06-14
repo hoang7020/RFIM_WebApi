@@ -31,8 +31,8 @@ public class FloorController {
         }
     }
 
-    @RequestMapping(value = "/floors", method = RequestMethod.GET, params = "id")
-    public ResponseEntity getByShelfId(@RequestParam("id") String id) {
+    @RequestMapping(value = "/floors/{id}", method = RequestMethod.GET)
+    public ResponseEntity getByShelfId(@PathVariable("id") String id) {
         ResultResponse response = new ResultResponse();
         List<FloorDTO> floors = service.getByShelfId(id);
         if (floors.size() > 0) {

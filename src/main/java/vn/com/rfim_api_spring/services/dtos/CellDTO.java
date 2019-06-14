@@ -1,19 +1,17 @@
-package vn.com.rfim_api_spring.persistences.entities;
+package vn.com.rfim_api_spring.services.dtos;
 
-import javax.persistence.*;
+import vn.com.rfim_api_spring.persistences.entities.Floor;
 
-@Entity
-@Table(name = "Cell")
-public class Cell {
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-    @Id
+public class CellDTO {
+
     private String cellId;
     private int cellNo;
     private String cellRfid;
-    private String description;
-    @ManyToOne()
-    @JoinColumn(name = "floorId", nullable = false)
-    private Floor floor;
+    private String Description;
+    private String floorId;
 
     public String getCellId() {
         return cellId;
@@ -40,18 +38,18 @@ public class Cell {
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        description = description;
+        Description = description;
     }
 
-    public Floor getFloor() {
-        return floor;
+    public String getFloorId() {
+        return floorId;
     }
 
-    public void setFloor(Floor floor) {
-        this.floor = floor;
+    public void setFloorId(String floorId) {
+        this.floorId = floorId;
     }
 }

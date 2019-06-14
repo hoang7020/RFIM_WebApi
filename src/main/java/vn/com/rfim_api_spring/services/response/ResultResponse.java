@@ -3,8 +3,8 @@ package vn.com.rfim_api_spring.services.response;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResultResponse {
-   public String message;
-   public Object data;
+   private String message;
+   private Object data;
 
     public ResultResponse() {
     }
